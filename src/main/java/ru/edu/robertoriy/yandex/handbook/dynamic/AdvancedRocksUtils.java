@@ -28,7 +28,7 @@ public final class AdvancedRocksUtils {
 
         for (int j = DEFAULT_LENGTH_TO_FILL; j <= position.height(); j++) {
             for (int i = DEFAULT_LENGTH_TO_FILL; i <= position.width(); i++) {
-                matrix[j][i] = hasWinningStrategy(new Position(i, j), matrix) ? Cell.LOOSE : Cell.WIN;
+                matrix[j][i] = hasWinningStrategy(new Position(i, j), matrix) ? Cell.WIN : Cell.LOOSE;
             }
         }
 
@@ -36,15 +36,12 @@ public final class AdvancedRocksUtils {
     }
 
     private static boolean hasWinningStrategy(Position currentPosition, Cell[][] matrix) {
-        return matrix[currentPosition.height() - 1][currentPosition.width()] == Cell.WIN
-            && matrix[currentPosition.height()][currentPosition.width() - 1] == Cell.WIN
-            && matrix[currentPosition.height() - 2][currentPosition.width()] == Cell.WIN
-            && matrix[currentPosition.height()][currentPosition.width() - 2] == Cell.WIN
-            && matrix[currentPosition.height() - 2][currentPosition.width() - 1] == Cell.WIN
-            && matrix[currentPosition.height() - 1][currentPosition.width() - 2] == Cell.WIN;
-    }
-
-    public record Position(int width, int height) {
+        return matrix[currentPosition.height() - 1][currentPosition.width()] == Cell.LOOSE
+            || matrix[currentPosition.height()][currentPosition.width() - 1] == Cell.LOOSE
+            || matrix[currentPosition.height() - 2][currentPosition.width()] == Cell.LOOSE
+            || matrix[currentPosition.height()][currentPosition.width() - 2] == Cell.LOOSE
+            || matrix[currentPosition.height() - 2][currentPosition.width() - 1] == Cell.LOOSE
+            || matrix[currentPosition.height() - 1][currentPosition.width() - 2] == Cell.LOOSE;
     }
 
     enum Cell {
@@ -61,5 +58,8 @@ public final class AdvancedRocksUtils {
         public String toString() {
             return value;
         }
+    }
+
+    public record Position(int width, int height) {
     }
 }

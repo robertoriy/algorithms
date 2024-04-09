@@ -18,7 +18,7 @@ public final class RocksUtils {
 
         for (int j = 1; j <= position.height(); j++) {
             for (int i = 1; i <= position.width(); i++) {
-                matrix[j][i] = hasWinningStrategy(new Position(i, j), matrix) ? Cell.LOOSE : Cell.WIN;
+                matrix[j][i] = hasWinningStrategy(new Position(i, j), matrix) ? Cell.WIN : Cell.LOOSE;
             }
         }
 
@@ -26,12 +26,9 @@ public final class RocksUtils {
     }
 
     private static boolean hasWinningStrategy(Position currentPosition, Cell[][] matrix) {
-        return matrix[currentPosition.height() - 1][currentPosition.width() - 1] == Cell.WIN
-            && matrix[currentPosition.height() - 1][currentPosition.width()] == Cell.WIN
-            && matrix[currentPosition.height()][currentPosition.width() - 1] == Cell.WIN;
-    }
-
-    public record Position(int width, int height) {
+        return matrix[currentPosition.height() - 1][currentPosition.width() - 1] == Cell.LOOSE
+                || matrix[currentPosition.height() - 1][currentPosition.width()] == Cell.LOOSE
+                || matrix[currentPosition.height()][currentPosition.width() - 1] == Cell.LOOSE;
     }
 
     enum Cell {
@@ -48,5 +45,8 @@ public final class RocksUtils {
         public String toString() {
             return value;
         }
+    }
+
+    public record Position(int width, int height) {
     }
 }
