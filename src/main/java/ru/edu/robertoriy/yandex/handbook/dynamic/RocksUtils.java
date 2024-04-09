@@ -16,8 +16,8 @@ public final class RocksUtils {
             matrix[i][0] = matrix[i - 1][0] == Cell.WIN ? Cell.LOOSE : Cell.WIN;
         }
 
-        for (int i = 1; i <= position.width(); i++) {
-            for (int j = 1; j <= position.height(); j++) {
+        for (int j = 1; j <= position.height(); j++) {
+            for (int i = 1; i <= position.width(); i++) {
                 matrix[j][i] = hasWinningStrategy(new Position(i, j), matrix) ? Cell.LOOSE : Cell.WIN;
             }
         }
