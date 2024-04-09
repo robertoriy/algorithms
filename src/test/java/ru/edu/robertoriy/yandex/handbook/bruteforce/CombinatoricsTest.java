@@ -5,7 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class BruteForceTest {
+final class CombinatoricsTest {
     @ParameterizedTest
     @DisplayName("Тест: Permutation(order) + Repetitions")
     @CsvSource({
@@ -15,7 +15,7 @@ final class BruteForceTest {
         "0, 5, 0"
     })
     void testPermutationWithRepetitionNormalCase(int n, int r, int expected) {
-        int actual = BruteForceUtils.permutationWithRepetition(n, r);
+        int actual = CombinatoricsUtils.permutationWithRepetition(n, r);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -27,7 +27,7 @@ final class BruteForceTest {
         "10, 0, 1"
     })
     void testPermutationNoRepetitionNormalCase(int n, int r, int expected) {
-        int actual = BruteForceUtils.permutationNoRepetition(n, r);
+        int actual = CombinatoricsUtils.permutationNoRepetition(n, r);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -40,7 +40,7 @@ final class BruteForceTest {
         "5, 0, 1"
     })
     void testCombinationWithRepetitionNormalCase(int n, int r, int expected) {
-        int actual = BruteForceUtils.combinationWithRepetition(n, r);
+        int actual = CombinatoricsUtils.combinationWithRepetition(n, r);
 
         assertThat(actual).isEqualTo(expected);
     }
@@ -53,7 +53,7 @@ final class BruteForceTest {
         "5, 0, 1"
     })
     void testCombinationNoRepetitionNormalCase(int n, int r, int expected) {
-        int actual = BruteForceUtils.combinationNoRepetition(n, r);
+        int actual = CombinatoricsUtils.combinationNoRepetition(n, r);
 
         assertThat(actual).isEqualTo(expected);
     }

@@ -1,7 +1,7 @@
 package ru.edu.robertoriy.yandex.handbook.bruteforce;
 
-public final class BruteForceUtils {
-    private BruteForceUtils() {
+public final class CombinatoricsUtils {
+    private CombinatoricsUtils() {
     }
 
     public static int permutationWithRepetition(int n, int r) {
