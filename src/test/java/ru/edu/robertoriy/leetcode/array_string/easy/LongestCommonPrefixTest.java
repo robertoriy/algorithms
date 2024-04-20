@@ -8,15 +8,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LongestCommonPrefixTest {
-    @ParameterizedTest
-    @DisplayName("Тест: самый длинный префикс")
-    @MethodSource("provideWords")
-    void testLongestCommonPrefix(String[] strs, String expected) {
-        String actual = LongestCommonPrefix.longestCommonPrefix(strs);
-
-        assertThat(actual).isEqualTo(expected);
-    }
-
     private static Stream<Arguments> provideWords() {
         return Stream.of(
             Arguments.of(
@@ -32,5 +23,14 @@ class LongestCommonPrefixTest {
                 new String[] {"a"}, "a"
             )
         );
+    }
+
+    @ParameterizedTest
+    @DisplayName("Тест: самый длинный префикс")
+    @MethodSource("provideWords")
+    void testLongestCommonPrefix(String[] strs, String expected) {
+        String actual = LongestCommonPrefix.longestCommonPrefix(strs);
+
+        assertThat(actual).isEqualTo(expected);
     }
 }

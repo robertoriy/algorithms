@@ -4,16 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class RomanToInteger {
-    private static final Map<Character, Integer> dictionary = new HashMap<>();
+    private static final Map<Character, Integer> DICTIONARY = new HashMap<>();
 
     static {
-        dictionary.put('I', 1);
-        dictionary.put('V', 5);
-        dictionary.put('X', 10);
-        dictionary.put('L', 50);
-        dictionary.put('C', 100);
-        dictionary.put('D', 500);
-        dictionary.put('M', 1000);
+        // CHECKSTYLE:OFF MagicNumber
+        DICTIONARY.put('I', 1);
+        DICTIONARY.put('V', 5);
+        DICTIONARY.put('X', 10);
+        DICTIONARY.put('L', 50);
+        DICTIONARY.put('C', 100);
+        DICTIONARY.put('D', 500);
+        DICTIONARY.put('M', 1000);
+        // CHECKSTYLE:ON MagicNumber
     }
 
     private RomanToInteger() {
@@ -24,12 +26,12 @@ public final class RomanToInteger {
         int result = 0;
 
         for (int i = 0; i < romanChars.length; i++) {
-            if (!dictionary.containsKey(romanChars[i])) {
+            if (!DICTIONARY.containsKey(romanChars[i])) {
                 throw new IllegalArgumentException("Invalid symbol: " + romanChars[i]);
             }
-            int currentNumber = dictionary.get(romanChars[i]);
+            int currentNumber = DICTIONARY.get(romanChars[i]);
 
-            if (i < romanChars.length - 1 && currentNumber < dictionary.get(romanChars[i + 1])) {
+            if (i < romanChars.length - 1 && currentNumber < DICTIONARY.get(romanChars[i + 1])) {
                 result -= currentNumber;
             } else {
                 result += currentNumber;
