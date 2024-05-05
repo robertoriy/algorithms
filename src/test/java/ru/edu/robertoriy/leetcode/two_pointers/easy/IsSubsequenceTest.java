@@ -11,7 +11,7 @@ final class IsSubsequenceTest {
     @CsvSource({
         "abc, ahbgdc"
     })
-    void testIisSubsequenceTrueCase(String s, String t) {
+    void testIsSubsequenceTrueCase(String s, String t) {
         boolean actual = IsSubsequence.isSubsequence(s, t);
 
         assertThat(actual).isTrue();
